@@ -1,0 +1,343 @@
+declare
+v_item_id varchar2(100);
+v_item_name varchar2(100);
+begin
+
+
+
+
+
+select  ITEM_ID, ITEM_NAME
+into v_item_id, v_item_name
+from ITEM
+Where BARCODE_NO = :P48_FILTER;
+
+ 
+
+
+
+-- htp.p('<img style= "height:100px;" src="https://barcode.tec-it.com/barcode.ashx?data='|| :P46_NAME ||'  '|| :P2_BARCODE ||'" alt="barcode"/>&nbsp;&nbsp;&nbsp;&nbsp;');
+
+
+htp.p('
+           <style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;background-color: #FFFFFF;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0pky{border-color:inherit;text-align:center;vertical-align:top; color:#000000; font-weight: bold;}
+
+
+</style>
+<table class="tg" style="box-sizing:border-box; border: 3px solid #000000;" width="100%" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 15px;">
+<thead>
+  <tr>
+    <th class="tg-0pky" colspan="24"><img src="#APP_FILES#banner.png" alt="BANNER" width="100%">   </th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="18">'||v_item_name||'</td>
+    <td class="tg-0pky" colspan="2">Issue Date</td>
+    <td class="tg-0pky" colspan="2">Due Date</td>
+    <td class="tg-0pky" colspan="2">Billing Month</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="18" rowspan="4">NAME & ADDRESS: '||:P46_ITEM_NAME||''||:v_item_name||'</td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="2">Tariff/Category</td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="2" ></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="6">Billing Status</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" ID="RT" colspan="6" style="border-color:inherit;text-align:center;justify-content: center; align-items: center;">Particulars</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="2" rowspan="13" style="vertical-align: middle;  transform: rotate(270deg); text-align: center;">Payment History</td>
+    <td class="tg-0pky" colspan="2">MONTH</td>
+    <td class="tg-0pky" colspan="2">PAYMENT</td>
+    <td class="tg-0pky" colspan="11" rowspan="3">NOTICES:  '||:P46_ITEM_CATEGORY||'</td>
+    <td class="tg-0pky" colspan="2" rowspan="4" style="vertical-align: middle; transform: rotate(270deg); text-align: center; text-align: center;">Current</td>
+    <td class="tg-0pky" colspan="3">Water</td>
+    <td class="tg-0pky" colspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="2">JAN</td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="3">Sewerage</td>
+    <td class="tg-0pky" colspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="2">FEB</td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="3">Construction</td>
+    <td class="tg-0pky" colspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="2">MAR</td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="11" style="border-color:inherit;text-align:center;justify-content: center; align-items: center;">Tariff Rate</td>
+    <td class="tg-0pky" colspan="5"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="2">APRIL</td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="9">Water</td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="2" rowspan="4" style="vertical-align: middle; transform: rotate(270deg); text-align: center; text-align: center;">Arrears</td>
+    <td class="tg-0pky" colspan="3">Water</td>
+    <td class="tg-0pky" colspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="2">MAY</td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="9">Sewerage</td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="3">Sewerage</td>
+    <td class="tg-0pky" colspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="2">JUN</td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="9">Construction</td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="3">Construction</td>
+    <td class="tg-0pky" colspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="2">JULY</td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="11" style="border-color:inherit;text-align:center;justify-content: center; align-items: center;">TOTAL OUTSTANDING ARREARS</td>
+    <td class="tg-0pky" colspan="3">Service Charges</td>
+    <td class="tg-0pky" colspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="2">AUGUST</td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="9">Water</td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="2" rowspan="5" style="vertical-align: middle; transform: rotate(270deg); text-align: center;">Payable</td>
+    <td style="background-color:Tomato;" class="tg-0pky" colspan="3" rowspan="2">Within due date</td>
+    <td class="tg-0pky" colspan="2" rowspan="2">'||:P46_UNIT_PRICE||'</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="2">SEPT</td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="9">Sewerage</td>
+    <td class="tg-0pky" colspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="2">OCT</td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="9">Construction</td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="3">Surcharge</td>
+    <td class="tg-0pky" colspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="2">NOV</td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="11" rowspan="2">Total</td>
+    <td style="background-color:Tomato;" class="tg-0pky" colspan="3" rowspan="2">After due date</td>
+    <td class="tg-0pky" colspan="2" rowspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="2">DEC</td>
+    <td class="tg-0pky" colspan="2"></td>
+  </tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0pky{text-align:left;vertical-align:top color:#000000;}
+.ty {border-style: none;background-color:Tomato;width: 100%;border-spacing: 1em; border-radius: 5px; margin: 20px; margin-left: auto;
+  margin-right: auto;}
+</style>
+<table class="ty" style="border: 3px solid #000000;">
+<thead>
+    <tr><td></td></tr>
+  <tr>
+        <td class="tg-0pky" style="text-align: left; color:#000000;">Compulsory Information</td><td style="text-align: right; color:#000000; font-size: large; font-weight: bold;">ذیل میں صارفین کو معلومات فراہم کرنا لازمی ہے۔</td>
+  </tr>
+  <tr>
+        <td></td>
+  </tr>
+  <tr>
+        <td style="text-align: left; color:#000000;">Name:</td><td style="text-align: right;color:#000000;">نام</td>
+  </tr>
+  <tr>
+         <td></td>
+  </tr>
+  <tr>
+        <td style="text-align: left; color:#000000;">Fathers Name:</td> <td style="text-align: right;color:#000000;">باپ کا نام۔</td>
+  </tr>
+  <tr>
+     <td></td>
+  </tr>
+  <tr>     
+        <td style="text-align: left; color:#000000;">CNIC:</td><td style="text-align: right;color:#000000;">شناخت</td>
+  </tr>
+  <tr>
+     <td></td>
+  </tr>
+  <tr>
+
+    <td style="text-align: left; color:#000000;">Mobile No:</td><td style="text-align: right;color:#000000;">موبائل نمبر</td>
+  </tr>
+  <tr>
+     <td></td>
+  </tr>
+  <tr>
+    <td style="text-align: left; color:#000000;">Email ID for E-Billing:</td> <td style="text-align: right;color:#000000;">ای بلنگ کے لیے ای میل آئی ڈی</td>
+  </tr>
+  <tr>
+     <td></td>
+  </tr>
+  <tr>
+     <td></td>
+  </tr>
+</thead>
+</table>
+
+
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<h1 style="text-align: center; color:#000000;">WATER AND SANITATION AGENCY, (WASA)</H1> 
+    <H1 style="text-align: center; color:#000000;">         HDA, HEDRABAD</H1>
+<table class="tg" style="box-sizing:border-box; border: 3px solid #000000;" width="100%" border="0" cellspacing="0" cellpadding="0">
+<thead>
+  <tr>
+    <th class="tg-0pky" colspan="7">'||:P46_ITEM_ID||'</th>
+    <th class="tg-0pky">Issue Date</th>
+    <th class="tg-0pky">Due Date</th>
+    <th class="tg-0pky">Billing Month</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" colspan="7" rowspan="2">NAME & ADDRESS:  '||:P46_ITEM_NAME||'</td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Tariff/Category</td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky">Dia:</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="10" style="border-color:inherit;text-align:center;justify-content: center; align-items: center;">Particulars</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" rowspan="2"></td>
+    <td class="tg-0pky" rowspan="2">Water</td>
+    <td class="tg-0pky" rowspan="2">Sewerage</td>
+    <td class="tg-0pky" rowspan="2">Construction</td>
+    <td class="tg-0pky" rowspan="2">Service Charges</td>
+    <td class="tg-0pky" rowspan="2">Total</td>
+    <td class="tg-0pky" rowspan="5" style="vertical-align: middle; transform: rotate(270deg); text-align: center;">Payable</td>
+    <td class="tg-0pky" colspan="2" rowspan="2" style="background-color:Tomato;">Within due date</td>
+    <td class="tg-0pky" rowspan="2">'||:P46_UNIT_PRICE||'</td>
+  </tr>
+  <tr>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Current</td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky" colspan="2">Surcharge</td>
+    <td class="tg-0pky"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Arrears</td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky" colspan="2" rowspan="2" style="background-color:Tomato;">After due date</td>
+    <td class="tg-0pky" rowspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="4">'||:P46_ITEM_ID||'</td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="10">BARCODE: '||:P2_BARCODE||'</td> 
+  </tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+');
+
+
+ sys.htp.p('<input type= "button1" class="button button1" class="t-Icon t-Icon--right fa fa-print" id="print" type="button" onclick="printdiv(''div_print1'');" value="PRINT"/><br/>
+        <div id="div_print1" style="margin-top:50px;"> <div class="container">
+
+    ');
+        
+
+
+
+        
+
+
+htp.p('</div>');
+
+
+
+
+  sys.htp.p('item name is:' || v_item_name);
+
+exception 
+    when no_data_found then
+     v_item_id:='';
+     v_item_name:='';
+
+     END;
