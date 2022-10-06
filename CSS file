@@ -1,0 +1,30 @@
+.t-Body-contentInner { 
+background-image: url'https://mdbootstrap.com/img/new/textures/full/171.jpg');
+background-size: cover;
+width: 500px;
+height: 0px;
+padding-top: 10%;
+opacity: 0.8;
+
+}
+
+.t-Body-main{
+background-image:url(#APP_FILES#close-up-view-of-utility-bill-usa-CRXEP9.jpg);
+background-repeat: no-repeat;
+background-size : cover;
+background-position: center;
+
+}
+
+#sss{
+    margin-left: 43%;
+}
+
+
+.t-Region-header{
+    border-radius: 25px;
+}
+
+#R4985899210388331{
+    border-radius: 25px;
+}
